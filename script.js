@@ -10,8 +10,7 @@ function writePassword() {
 }
 
 
-//array for confirmed criteria 
-var inputVal = []; 
+
 //function that prompts user for criteria
 function generatePassword(){
   var length = prompt("Chose password length between 8-128 characters");
@@ -20,6 +19,9 @@ function generatePassword(){
     alert("length needs to be between 8 & 128 characters!");
     return;
   }
+  //array for confirmed criteria 
+  var inputVal = []; 
+
   var upperletters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var lowerletters = 'abcdefghijklmnopqrstuvwxyz';
   var characters = ["!,@,#,$,%,^,&,*,_,-,+,?,~,`"]
@@ -44,24 +46,24 @@ function generatePassword(){
   console.log(specialchar);
   if (specialchar == true){
     inputVal.push(characters);
-
-    console.log(inputVal)
   } 
-  
-}
-//function randomPassword(){
+  console.log(inputVal)
 
-//}
-  
- 
+//loop to pull random characters from inputVal array
+  for (var i = 0; i <= length; i++) {
+    var inputChoices = parseInt(Math.floor(Math.random() *inputVal.length));
+    var randomSelectionarr = inputVal[inputChoices];
+    var lengthbyuser = Math.floor(Math.random() *randomSelectionarr.length);
+    var randomPick = randomSelectionarr[lengthbyuser];
+    password += randomPick;
 
-//loop returns password without prompts - starter code
-/*  for (i = 1; i <=8; i++){
-    var char = Math.floor(Math.random()
-        *letters.length +1);
-        password += letters.charAt(char)
+    
+    console.log(randomPick)
   }
-  return password;*/
+
+  return password;
+}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
